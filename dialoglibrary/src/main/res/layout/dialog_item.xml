@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_dialog_background"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10_0dp"
+            android:layout_marginBottom="@dimen/dimen_10_0dp"
+            android:background="@drawable/ic_dialog_background"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10_0dp"
+            android:text="取消"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/textsize_18_0sp" />
+    </LinearLayout>
+</layout>

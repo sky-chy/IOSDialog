@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--全局对话框-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_20_0dp"
+                android:gravity="center"
+                android:text="全局对话框\n例如：小米、360这些手机去掉了原生的dialog对话框支持，则可以使用这些全局对话框"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_text_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="纯文本对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_right_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="正确对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_error_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="错误对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_warning_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="警告对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_information_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="信息对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_item_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="Item对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1_0dp"
+                android:layout_marginTop="@dimen/dimen_20_0dp"
+                android:layout_marginBottom="@dimen/dimen_20_0dp"
+                android:background="@color/colorStroke" />
+
+            <!--局部对话框-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="局部对话框\n与全局对话框的例如反之"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_text_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="纯文本对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_right_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="正确对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_error_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="错误对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_warning_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="警告对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_information_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="信息对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+
+            <Button
+                android:id="@+id/btn_item_dialog2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="Item对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</layout>

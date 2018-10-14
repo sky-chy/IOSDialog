@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chy.dialoglibrary">
+
+    <application>
+        <activity
+            android:name=".dialog.GlobalTextDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/CHYDialog" />
+        <activity
+            android:name=".dialog.GlobalRegularDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/CHYDialog" />
+        <activity
+            android:name=".dialog.GlobalItemDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/CHYDialog" />
+    </application>
+
+</manifest>

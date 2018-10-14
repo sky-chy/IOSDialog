@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="content"
+            type="com.chy.dialoglibrary.bean.ContentBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_dialog_background"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_10_0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10_0dp"
+            android:text="@{content.content}"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/textsize_14_0sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorStroke" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:padding="@dimen/dimen_5_0dp"
+            android:text="@{content.rightButton}"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/textsize_15_0sp" />
+    </LinearLayout>
+</layout>

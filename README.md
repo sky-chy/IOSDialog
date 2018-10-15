@@ -1,5 +1,20 @@
 # 一个高仿ios的文本、提示、item、grid的全局和局部对话框
 该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
+# 截图
+# Text_Dialog
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png)
+# Regular_Right_Dialog
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Regular_Right_Dialog.png)
+# Item_Dialog
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Item_Dialog.png)
+# Grid_Dialog
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Grid_Dialog.png)
+# Global Delayed start
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start1.png)
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start2.png)
+# Local Delayed start.png
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png)
+ ![image](https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png)
 # 完整的使用教程
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;

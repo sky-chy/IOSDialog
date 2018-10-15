@@ -57,6 +57,7 @@
             android:textSize="@{size.contentSize==0f?@dimen/textsize_14_0sp:size.contentSize}" />
 
         <View
+            android:id="@+id/stroke_horizontal"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorStroke" />
@@ -81,6 +82,7 @@
                 android:visibility="@{TextUtils.isEmpty(content.cancelButton)?View.GONE:View.VISIBLE}" />
 
             <View
+                android:id="@+id/stroke_vertical"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorStroke"

@@ -4,11 +4,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.chy.dialoglibrary.R;
 import com.chy.dialoglibrary.bean.ColorBean;
@@ -98,10 +100,20 @@ public class LocalTextDialog extends Dialog {
     /**
      * 设置文字大小
      */
-
     public void setTextSize(SizeBean size) {
         mBinding.setSize(size);
+    }
 
+    /**
+     * 设置对话框背景
+     *
+     * @param drawable   drawable的res
+     * @param showStorke 是否显示分割线
+     */
+    public void setBackgroundResource(@DrawableRes int drawable, boolean showStorke) {
+        mBinding.getRoot().setBackgroundResource(drawable);
+        if (!showStorke)
+            ((LinearLayout) mBinding.getRoot()).getChildAt(1).setVisibility(View.GONE);
     }
 
 }

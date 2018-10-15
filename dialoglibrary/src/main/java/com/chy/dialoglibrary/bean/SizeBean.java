@@ -15,8 +15,9 @@ public class SizeBean implements Serializable {
         contentSize = 0f;
     }
 
-    public SizeBean(float rightBtnSize, float contentSize) {
-        this.rightBtnSize = rightBtnSize;
+    public SizeBean(float btnSize, float contentSize) {
+        this.rightBtnSize = btnSize;
+        this.cancelBtnSize = btnSize;
         this.contentSize = contentSize;
     }
 

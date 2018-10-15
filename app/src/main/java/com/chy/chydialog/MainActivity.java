@@ -85,7 +85,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                     }
                 });
+                //原始状态的设置内容
                 startActivity(globalItemDialog.show(this, strs));
+                //改变文字颜色并设置内容
+                //startActivity(globalItemDialog.show(this, strs,new ColorBean()));
+                //改变文字大小并设置内容
+                //startActivity(globalItemDialog.show(this, strs,new SizeBean(30f,0f)));
+                //同时改变文字大小和颜色并设置内容
+                //startActivity(globalItemDialog.show(this, strs,new ColorBean(),new SizeBean(30f,30f)));
                 break;
             case R.id.btn_grid_dialog1:
                 GlobalGridDialog globalGridDialog = GlobalGridDialog.getInstance(new CHYOnItemClickListener() {
@@ -94,7 +101,14 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                     }
                 });
+                //原始状态的设置内容
                 startActivity(globalGridDialog.show(this, list));
+                //改变文字颜色并设置内容
+                //startActivity(globalGridDialog.show(this, list,Color.GREEN));
+                //改变文字大小并设置内容
+                //startActivity(globalGridDialog.show(this, list,30f));
+                //同时改变文字大小和颜色并设置内容
+                //startActivity(globalGridDialog.show(this, list,Color.GREEN,30f));
                 break;
             case R.id.btn_delayed_start1:
                 moveTaskToBack(true);
@@ -150,6 +164,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                     }
                 });
+                //localItemDialog.setCancelButtonColor(Color.RED);
+                //localItemDialog.setCancelButtonSize(50f);
+                //设置item字体颜色
+                //localItemDialog.setContentColor(Color.GREEN);
+                //设置item字体大小
+                //localItemDialog.setContentSize(30f);
                 break;
             case R.id.btn_grid_dialog2:
                 LocalGridDialog localGridDialog = new LocalGridDialog(MainActivity.this);
@@ -159,6 +179,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                     }
                 });
+                //设置文字颜色
+                //localGridDialog.setTextColor(Color.RED);
+                //设置文字大小
+                //localGridDialog.setTextSize(30f);
                 break;
             case R.id.btn_delayed_start2:
                 moveTaskToBack(true);

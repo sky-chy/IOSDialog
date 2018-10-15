@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -137,7 +138,7 @@ public class LocalGridDialog extends Dialog {
      *
      * @param color
      */
-    public void setTitleColor(int color) {
+    public void setTextColor(@ColorInt int color) {
         this.color = color;
         adapter.notifyDataSetChanged();
     }
@@ -147,7 +148,7 @@ public class LocalGridDialog extends Dialog {
      *
      * @param size
      */
-    public void setTtleSize(float size) {
+    public void setTextSize(float size) {
         this.size = size;
         adapter.notifyDataSetChanged();
     }

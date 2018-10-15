@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -24,8 +25,10 @@ public class LocalItemDialog extends Dialog {
     private Context mContext;
     private DialogItemBinding mBinding;
     private ItemTextviewBinding mItemBinding;
-    private float size = 0;
+    private float size;
+    private int color;
     private int position;
+    private RecyclerView.Adapter adapter;
 
     private LocalItemDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
@@ -41,7 +44,6 @@ public class LocalItemDialog extends Dialog {
      * 初始化
      */
     private void init() {
-        size = mContext.getResources().getDimensionPixelSize(R.dimen.dimen_10_0dp);
         this.setCanceledOnTouchOutside(true);
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.dialog_item, null, false);
         setContentView(mBinding.getRoot());
@@ -99,7 +101,7 @@ public class LocalItemDialog extends Dialog {
      * @param itemClickListener item的监听器
      */
     private void initAdapter(final String[] item, final CHYOnItemClickListener itemClickListener) {
-        mBinding.rvItem.setAdapter(new RecyclerView.Adapter() {
+        adapter = new RecyclerView.Adapter() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -121,6 +123,10 @@ public class LocalItemDialog extends Dialog {
                 } else {
                     mItemBinding.tvItem.setBackgroundResource(R.drawable.ic_content_noradius);
                 }
+                if (size != 0f)
+                    mItemBinding.tvItem.setTextSize(size);
+                if (color != 0)
+                    mItemBinding.tvItem.setTextColor(color);
                 mItemBinding.tvItem.setText(item[i]);
                 mItemBinding.tvItem.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -138,14 +144,20 @@ public class LocalItemDialog extends Dialog {
             public int getItemCount() {
                 return item.length;
             }
-        });
+        };
+        mBinding.rvItem.setAdapter(adapter);
     }
 
     /**
      * 设置文字大小
      */
-    public void setCancelButtonColor(int color) {
+    public void setCancelButtonColor(@ColorInt int color) {
         mBinding.tvCancel.setTextColor(color);
+    }
+
+    public void setContentColor(@ColorInt int color) {
+        this.color = color;
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -153,6 +165,11 @@ public class LocalItemDialog extends Dialog {
      */
     public void setCancelButtonSize(float size) {
         mBinding.tvCancel.setTextSize(size);
+    }
+
+    public void setContentSize(float size) {
+        this.size = size;
+        adapter.notifyDataSetChanged();
     }
 
 }

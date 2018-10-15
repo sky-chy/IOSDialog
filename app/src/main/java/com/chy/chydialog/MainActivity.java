@@ -2,6 +2,7 @@ package com.chy.chydialog;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,10 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "点击了rightButton", Toast.LENGTH_SHORT).show();
                     }
                 });
-                intent = new Intent(MainActivity.this, globalTextDialog.getClass());
-                intent.putExtra("content", new ContentBean("我是内容区", "好的"));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                startActivity(globalTextDialog.show(this, new ContentBean("我是内容区", "好的")));
                 break;
             case R.id.btn_right_dialog1:
                 startGlobalDialog(GlobalRegularDialog.DIALOG_TYPE.RIGHT_DIALOG);
@@ -68,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
                 startGlobalDialog(GlobalRegularDialog.DIALOG_TYPE.INFORMATION_DIALOG);
                 break;
             case R.id.btn_item_dialog1:
-                GlobalItemDialog globalItemDialog = GlobalItemDialog.getInstance(new CHYOnItemClickListener() {
+                GlobalItemDialog globalItemDialog = GlobalItemDialog.getInstance(null, new CHYOnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                     }
-                }, null);
-                intent = new Intent(MainActivity.this, globalItemDialog.getClass());
-                intent.putExtra("content", strs);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                });
+                startActivity(globalItemDialog.show(this, strs));
+                break;
+            case R.id.btn_grid_dialog1:
+
                 break;
             /**
              * 局部对话框
@@ -132,11 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "点击了全局对话框的" + dialogType + "的cancelButton", Toast.LENGTH_SHORT).show();
             }
         }, dialogType);
-        intent = new Intent(MainActivity.this, globalRegularDialog.getClass());
-        intent.putExtra("content", new ContentBean("我是标题", "我是内容区", "取消", "好的"));
-        //intent.putExtra("content", new ContentBean("我是内容区",  "好的"));
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的")));
+//        startActivity(globalRegularDialog.show(this, new ContentBean("我是内容区", "好的")));
     }
 
     /**

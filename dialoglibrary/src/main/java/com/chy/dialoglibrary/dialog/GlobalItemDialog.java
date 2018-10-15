@@ -1,5 +1,7 @@
 package com.chy.dialoglibrary.dialog;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.chy.dialoglibrary.R;
+import com.chy.dialoglibrary.bean.ContentBean;
 import com.chy.dialoglibrary.databinding.DialogItemBinding;
 import com.chy.dialoglibrary.databinding.ItemTextviewBinding;
 import com.chy.dialoglibrary.listener.CHYOnItemClickListener;
@@ -28,7 +31,7 @@ public class GlobalItemDialog extends AppCompatActivity {
     private int position;
     private static String cancel;
 
-    public static GlobalItemDialog getInstance(CHYOnItemClickListener listener, String BtnCancel) {
+    public static GlobalItemDialog getInstance(String BtnCancel, CHYOnItemClickListener listener) {
         initializeType = true;
         chyOnItemClickListener = listener;
         cancel = BtnCancel;
@@ -40,13 +43,18 @@ public class GlobalItemDialog extends AppCompatActivity {
             throw new AndroidRuntimeException("error:Please use GlobalItemDialog.getInstance(CHYOnRightClickListener listener, String BtnCancel) to initialize");
     }
 
+    public Intent show(Context context, String[] strs) {
+        Intent intent = new Intent(context, this.getClass());
+        intent.putExtra("content", strs);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBingding = DataBindingUtil.setContentView(this, R.layout.dialog_item);
-        if (this.getIntent().getSerializableExtra("content") == null) {
-            throw new AndroidRuntimeException("error:intent.putExtra(key,value),Please write \"content\" to the key");
-        } else if (!(this.getIntent().getSerializableExtra("content") instanceof String[])) {
+        if (!(this.getIntent().getSerializableExtra("content") instanceof String[])) {
             throw new AndroidRuntimeException("error:the params is not instanceof String[])");
         }
         stritems = this.getIntent().getStringArrayExtra("content");

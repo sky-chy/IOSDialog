@@ -15,6 +15,10 @@
             android:name=".dialog.GlobalItemDialog"
             android:launchMode="singleInstance"
             android:theme="@style/CHYDialog" />
+        <activity
+            android:name=".dialog.GlobalGridDialog"
+            android:launchMode="singleInstance"
+            android:theme="@style/CHYDialog" />
     </application>
 
 </manifest>

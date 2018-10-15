@@ -75,6 +75,14 @@
                 android:onClick="onClick"
                 android:text="Item对话框"
                 android:textSize="@dimen/textsize_15_0sp" />
+            <Button
+                android:id="@+id/btn_grid_dialog1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_5_0dp"
+                android:onClick="onClick"
+                android:text="Grid对话框"
+                android:textSize="@dimen/textsize_15_0sp" />
 
             <View
                 android:layout_width="match_parent"

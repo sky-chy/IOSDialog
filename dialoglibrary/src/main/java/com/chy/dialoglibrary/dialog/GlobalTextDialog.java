@@ -1,5 +1,7 @@
 package com.chy.dialoglibrary.dialog;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -32,6 +34,13 @@ public class GlobalTextDialog extends AppCompatActivity implements View.OnClickL
             throw new AndroidRuntimeException("error:Please use GlobalTextDialog.getInstance(CHYOnRightClickListener listener) to initialize");
     }
 
+    public Intent show(Context context, ContentBean bean) {
+        Intent intent = new Intent(context, this.getClass());
+        intent.putExtra("content", bean);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +51,7 @@ public class GlobalTextDialog extends AppCompatActivity implements View.OnClickL
     }
 
     private void init() {
-        if (this.getIntent().getSerializableExtra("content") == null) {
-            throw new AndroidRuntimeException("error:intent.putExtra(key,value),Please write \"content\" to the key");
-        } else if (!(this.getIntent().getSerializableExtra("content") instanceof ContentBean)) {
+    if (!(this.getIntent().getSerializableExtra("content") instanceof ContentBean)) {
             throw new AndroidRuntimeException("error:the params is not instanceof com.chy.dialoglibrary.bean.ContentBean,method: ContentBean(String content, String rightButton)");
         }
         ContentBean contentBean = (ContentBean) this.getIntent().getSerializableExtra("content");

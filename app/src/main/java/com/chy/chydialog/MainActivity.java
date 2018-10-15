@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 //设置字体大小
                 //localTextDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
                 //设置背景
-                //localTextDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
+                localTextDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
                 break;
             case R.id.btn_right_dialog2:
                 startLocalDialog(LocalRegularDialog.DIALOG_TYPE.RIGHT_DIALOG);
@@ -262,6 +262,6 @@ public class MainActivity extends AppCompatActivity {
         //设置字体大小
         //localRegularDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
         //设置背景
-        //localRegularDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
+        //localRegularDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
     }
 }

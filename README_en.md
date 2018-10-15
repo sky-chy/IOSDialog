@@ -1,6 +1,6 @@
-# 一个高仿ios的文本、提示、item、grid的全局和局部对话框
-该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
-# 完整的使用教程
+# A global and local dialog for text, prompts, item, grid, high imitation ios
+The dialog box's global dialog box is to solve the problem that the native dialog does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed in the launcher even if the app enters the background.
+# Complete tutorial
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;
         private String[] strs;
@@ -26,7 +26,7 @@
         public void onClick(View view) {
             switch (view.getId()) {
                 /**
-                 * 全局对话框
+                 * Global dialog
                  */
                 case R.id.btn_text_dialog1:
                     GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
@@ -35,13 +35,13 @@
                             Toast.makeText(MainActivity.this, "点击了全局对话框的rightButton", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    //原始状态的设置内容
+                    //Original setting
                     startActivity(globalTextDialog.show(this, new ContentBean("我是内容区", "好的")));
-                    //改变文字颜色并设置内容
+                    //Change text color and set content
                     //startActivity(globalTextDialog.show(this, new ContentBean("我是内容区", "好的"), new ColorBean(Color.RED, Color.BLUE)));
-                    //改变文字大小并设置内容
+                    //Change the text size and set the content
                     //startActivity(globalTextDialog.show(this, new ContentBean("我是内容区", "好的"), new SizeBean(60f, 90f)));
-                    //同时改变文字大小和颜色并设置内容
+                    //Change the text size and color and set the content at the same time
                     //startActivity(globalTextDialog.show(this, new ContentBean("我是内容区", "好的"), new ColorBean(Color.RED, Color.BLUE), new SizeBean(60f, 90f)));
                     break;
                 case R.id.btn_right_dialog1:
@@ -63,13 +63,13 @@
                             Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    //原始状态的设置内容
+                    //Original setting
                     startActivity(globalItemDialog.show(this, strs));
-                    //改变文字颜色并设置内容
+                    //Change text color and set content
                     //startActivity(globalItemDialog.show(this, strs,new ColorBean()));
-                    //改变文字大小并设置内容
+                    //Change the text size and set the content
                     //startActivity(globalItemDialog.show(this, strs,new SizeBean(30f,0f)));
-                    //同时改变文字大小和颜色并设置内容
+                    //Change the text size and color and set the content at the same time
                     //startActivity(globalItemDialog.show(this, strs,new ColorBean(),new SizeBean(30f,30f)));
                     break;
                 case R.id.btn_grid_dialog1:
@@ -79,13 +79,13 @@
                             Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    //原始状态的设置内容
+                    //Original setting
                     startActivity(globalGridDialog.show(this, list));
-                    //改变文字颜色并设置内容
+                    //Change text color and set content
                     //startActivity(globalGridDialog.show(this, list,Color.GREEN));
-                    //改变文字大小并设置内容
+                    //Change the text size and set the content
                     //startActivity(globalGridDialog.show(this, list,30f));
-                    //同时改变文字大小和颜色并设置内容
+                    //Change the text size and color and set the content at the same time
                     //startActivity(globalGridDialog.show(this, list,Color.GREEN,30f));
                     break;
                 case R.id.btn_delayed_start1:
@@ -106,7 +106,7 @@
                     }, 4000);
                     break;
                 /**
-                 * 局部对话框
+                 * Local dialog
                  */
                 case R.id.btn_text_dialog2:
                     final LocalTextDialog localTextDialog = new LocalTextDialog(this);
@@ -117,12 +117,12 @@
                             localTextDialog.dismiss();
                         }
                     });
-                    //设置字体颜色
+                    //Set font color
                     //localTextDialog.setTextColor(new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.RED));
-                    //设置字体大小
+                    //Set the font size
                     //localTextDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
-                    //设置背景
-                    //localTextDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
+                    //Set background
+                    //localTextDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
                     break;
                 case R.id.btn_right_dialog2:
                     startLocalDialog(LocalRegularDialog.DIALOG_TYPE.RIGHT_DIALOG);
@@ -146,9 +146,9 @@
                     });
                     //localItemDialog.setCancelButtonColor(Color.RED);
                     //localItemDialog.setCancelButtonSize(50f);
-                    //设置item字体颜色
+                    //Set item font color
                     //localItemDialog.setContentColor(Color.GREEN);
-                    //设置item字体大小
+                    //Set the item font size
                     //localItemDialog.setContentSize(30f);
                     break;
                 case R.id.btn_grid_dialog2:
@@ -159,9 +159,9 @@
                             Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    //设置文字颜色
+                    //Set text color
                     //localGridDialog.setTextColor(Color.RED);
-                    //设置文字大小
+                    //Set the text size
                     //localGridDialog.setTextSize(30f);
                     break;
                 case R.id.btn_delayed_start2:
@@ -186,9 +186,9 @@
         }
 
         /**
-         * 启动全局对话框
+         * Start global dialog
          *
-         * @param dialogType 对话框类型
+         * @param dialogType Dialog type
          */
         private void startGlobalDialog(final GlobalRegularDialog.DIALOG_TYPE dialogType) {
             GlobalRegularDialog globalRegularDialog = GlobalRegularDialog.getInstance(dialogType, new CHYOnRightClickListener() {
@@ -202,22 +202,22 @@
                     Toast.makeText(MainActivity.this, "点击了全局对话框的" + dialogType + "的cancelButton", Toast.LENGTH_SHORT).show();
                 }
             });
-            //原始状态的设置内容
+            //Original setting
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是内容区", "好的")));
             startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的")));
-            //改变文字颜色并设置内容
+            //Change text color and set content
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的"), new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.GRAY)));
-            //改变文字大小并设置内容
+            //Change the text size and set the content
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的"), new SizeBean(80f ,50f, 60f ,60f)));
-            //同时改变文字大小和颜色并设置内容
+            //Change the text size and color and set the content at the same time
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的"), new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.GRAY), new SizeBean(80f ,50f, 60f ,60f)));
 
         }
 
         /**
-         * 启动局部对话框
+         * Start local dialog
          *
-         * @param type 对话框类型
+         * @param type Dialog type
          */
         private void startLocalDialog(final LocalRegularDialog.DIALOG_TYPE type) {
             final LocalRegularDialog localRegularDialog = new LocalRegularDialog(this);
@@ -235,11 +235,11 @@
                     localRegularDialog.dismiss();
                 }
             });
-            //设置字体颜色
+            //Set font color
             //localRegularDialog.setTextColor(new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.RED));
-            //设置字体大小
+            /Set the font size
             //localRegularDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
-            //设置背景
-            //localRegularDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
+            //Set background
+            //localRegularDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
         }
     }

@@ -64,7 +64,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
+            android:background="@android:color/transparent"
             android:orientation="horizontal">
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:padding="@dimen/dimen_10_0dp"
                 android:text="@{content.cancelButton}"
@@ -91,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@null"
+                android:background="@android:color/transparent"
                 android:gravity="center"
                 android:padding="@dimen/dimen_10_0dp"
                 android:text="@{content.rightButton}"

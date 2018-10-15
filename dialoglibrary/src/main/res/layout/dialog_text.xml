@@ -4,6 +4,14 @@
     <data>
 
         <variable
+            name="size"
+            type="com.chy.dialoglibrary.bean.SizeBean" />
+
+        <variable
+            name="color"
+            type="com.chy.dialoglibrary.bean.ColorBean" />
+
+        <variable
             name="content"
             type="com.chy.dialoglibrary.bean.ContentBean" />
     </data>
@@ -23,8 +31,8 @@
             android:gravity="center"
             android:padding="@dimen/dimen_10_0dp"
             android:text="@{content.content}"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/textsize_14_0sp" />
+            android:textColor="@{color.contentColor}"
+            android:textSize="@{size.contentSize==0f?@dimen/textsize_14_0sp:size.contentSize}" />
 
         <View
             android:layout_width="match_parent"
@@ -39,7 +47,7 @@
             android:gravity="center"
             android:padding="@dimen/dimen_5_0dp"
             android:text="@{content.rightButton}"
-            android:textColor="@color/colorBlue"
-            android:textSize="@dimen/textsize_15_0sp" />
+            android:textColor="@{color.rightBtnColor}"
+            android:textSize="@{size.rightBtnSize==0f?@dimen/textsize_15_0sp:size.rightBtnSize}" />
     </LinearLayout>
 </layout>

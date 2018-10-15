@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.chy.dialoglibrary.R;
+import com.chy.dialoglibrary.bean.ColorBean;
 import com.chy.dialoglibrary.bean.ContentBean;
+import com.chy.dialoglibrary.bean.SizeBean;
 import com.chy.dialoglibrary.databinding.DialogRegularBinding;
 import com.chy.dialoglibrary.listener.CHYOnCancelClickListener;
 import com.chy.dialoglibrary.listener.CHYOnRightClickListener;
@@ -48,6 +50,8 @@ public class LocalRegularDialog extends Dialog {
         this.setCanceledOnTouchOutside(true);
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.dialog_regular, null, false);
         setContentView(mBinding.getRoot());
+        setTextColor(new ColorBean());
+        setTextSize(new SizeBean());
         setDialogSize();
     }
 
@@ -126,39 +130,16 @@ public class LocalRegularDialog extends Dialog {
     /**
      * 设置文字颜色
      */
-    public void setTitleColor(int color) {
-        mBinding.tvTitle.setTextColor(color);
-    }
-
-    public void setContentColor(int color) {
-        mBinding.tvContent.setTextColor(color);
-    }
-
-    public void setCancelButtonColor(int color) {
-        mBinding.tvCancel.setTextColor(color);
-    }
-
-    public void setRightButtonColor(int color) {
-        mBinding.tvRight.setTextColor(color);
+    public void setTextColor(ColorBean color) {
+        mBinding.setColor(color);
     }
 
     /**
      * 设置文字大小
      */
-    public void setTitleSize(float size) {
-        mBinding.tvTitle.setTextSize(size);
-    }
 
-    public void setContentSize(float size) {
-        mBinding.tvContent.setTextSize(size);
-    }
+    public void setTextSize(SizeBean size) {
+        mBinding.setSize(size);
 
-    public void setCancelButtonSize(float size) {
-        mBinding.tvCancel.setTextSize(size);
     }
-
-    public void setRightButtonSize(float size) {
-        mBinding.tvRight.setTextSize(size);
-    }
-
 }

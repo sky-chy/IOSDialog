@@ -3,6 +3,14 @@
 
     <data>
 
+        <variable
+            name="size"
+            type="com.chy.dialoglibrary.bean.SizeBean" />
+
+        <variable
+            name="color"
+            type="com.chy.dialoglibrary.bean.ColorBean" />
+
         <import type="android.view.View" />
 
         <import type="android.text.TextUtils" />
@@ -32,8 +40,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@{content.title}"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/textsize_15_0sp"
+            android:textColor="@{color.titleColor}"
+            android:textSize="@{size.rightBtnSize==0f?@dimen/textsize_15_0sp:size.titleSize}"
             android:visibility="@{TextUtils.isEmpty(content.title)?View.GONE:View.VISIBLE}" />
 
         <TextView
@@ -45,8 +53,8 @@
             android:gravity="center_horizontal"
             android:padding="@dimen/dimen_10_0dp"
             android:text="@{content.content}"
-            android:textColor="@color/colorGray"
-            android:textSize="@dimen/textsize_14_0sp" />
+            android:textColor="@{color.contentColor}"
+            android:textSize="@{size.contentSize==0f?@dimen/textsize_14_0sp:size.contentSize}" />
 
         <View
             android:layout_width="match_parent"
@@ -68,8 +76,8 @@
                 android:gravity="center"
                 android:padding="@dimen/dimen_10_0dp"
                 android:text="@{content.cancelButton}"
-                android:textColor="@color/colorRed"
-                android:textSize="@dimen/textsize_15_0sp"
+                android:textColor="@{color.cancelBtnColor}"
+                android:textSize="@{size.rightBtnSize==0f?@dimen/textsize_15_0sp:size.cancelBtnSize}"
                 android:visibility="@{TextUtils.isEmpty(content.cancelButton)?View.GONE:View.VISIBLE}" />
 
             <View
@@ -87,8 +95,8 @@
                 android:gravity="center"
                 android:padding="@dimen/dimen_10_0dp"
                 android:text="@{content.rightButton}"
-                android:textColor="@color/colorBlue"
-                android:textSize="@dimen/textsize_15_0sp" />
+                android:textColor="@{color.rightBtnColor}"
+                android:textSize="@{size.rightBtnSize==0f?@dimen/textsize_15_0sp:size.rightBtnSize}" />
         </LinearLayout>
     </LinearLayout>
 </layout>

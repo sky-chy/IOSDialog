@@ -2,7 +2,6 @@
  该对话框项目的全局对话框是为了解决原生对话框在小米、360等手机上面不支持的问题
  局部对话框是顺便一起写的
 # 完整的使用教程
-
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;
         private String[] strs;
@@ -123,6 +122,8 @@
                     //localTextDialog.setTextColor(new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.RED));
                     //设置字体大小
                     //localTextDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
+                    //设置背景
+                    //localTextDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
                     break;
                 case R.id.btn_right_dialog2:
                     startLocalDialog(LocalRegularDialog.DIALOG_TYPE.RIGHT_DIALOG);
@@ -239,5 +240,7 @@
             //localRegularDialog.setTextColor(new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.RED));
             //设置字体大小
             //localRegularDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
+            //设置背景
+            //localRegularDialog.setBackgroundResource(R.mipmap.ic_infomation, false);
         }
     }

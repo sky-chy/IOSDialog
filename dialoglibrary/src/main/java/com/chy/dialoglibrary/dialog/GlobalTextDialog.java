@@ -34,9 +34,9 @@ public class GlobalTextDialog extends AppCompatActivity implements View.OnClickL
             throw new AndroidRuntimeException("error:Please use GlobalTextDialog.getInstance(CHYOnRightClickListener listener) to initialize");
     }
 
-    public Intent show(Context context, ContentBean bean) {
+    public Intent show(Context context, ContentBean content) {
         Intent intent = new Intent(context, this.getClass());
-        intent.putExtra("content", bean);
+        intent.putExtra("content", content);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
@@ -51,8 +51,8 @@ public class GlobalTextDialog extends AppCompatActivity implements View.OnClickL
     }
 
     private void init() {
-    if (!(this.getIntent().getSerializableExtra("content") instanceof ContentBean)) {
-            throw new AndroidRuntimeException("error:the params is not instanceof com.chy.dialoglibrary.bean.ContentBean,method: ContentBean(String content, String rightButton)");
+        if (this.getIntent().getSerializableExtra("content") == null) {
+            throw new AndroidRuntimeException("error:the \"content\" is null,method: ContentBean(String content, String rightButton)");
         }
         ContentBean contentBean = (ContentBean) this.getIntent().getSerializableExtra("content");
         mBinding.setContent(contentBean);

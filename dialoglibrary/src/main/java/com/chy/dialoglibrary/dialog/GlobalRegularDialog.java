@@ -32,7 +32,7 @@ public class GlobalRegularDialog extends AppCompatActivity implements View.OnCli
         RIGHT_DIALOG, ERROR_DIALOG, WARNING_DIALOG, INFORMATION_DIALOG
     }
 
-    public static GlobalRegularDialog getInstance(CHYOnRightClickListener rightClickListener, CHYOnCancelClickListener cancelClickListener, DIALOG_TYPE type) {
+    public static GlobalRegularDialog getInstance(DIALOG_TYPE type, CHYOnRightClickListener rightClickListener, CHYOnCancelClickListener cancelClickListener) {
         onRightClickListener = rightClickListener;
         onCancelClickListener = cancelClickListener;
         dialog_type = type;
@@ -42,12 +42,12 @@ public class GlobalRegularDialog extends AppCompatActivity implements View.OnCli
 
     public GlobalRegularDialog() {
         if (!initializeType)
-            throw new AndroidRuntimeException("error:Please use GlobalRegularDialog.getInstance(CHYOnRightClickListener rightClickListener, CHYOnCancelClickListener cancelClickListener, DIALOG_TYPE type) to initialize");
+            throw new AndroidRuntimeException("error:Please use GlobalRegularDialog.getInstance(DIALOG_TYPE type, CHYOnRightClickListener rightClickListener, CHYOnCancelClickListener cancelClickListener) to initialize");
     }
 
-    public Intent show(Context context, ContentBean bean) {
+    public Intent show(Context context, ContentBean content) {
         Intent intent = new Intent(context, this.getClass());
-        intent.putExtra("content", bean);
+        intent.putExtra("content", content);
         //intent.putExtra("content", new ContentBean("我是内容区",  "好的"));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
@@ -57,15 +57,19 @@ public class GlobalRegularDialog extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.dialog_regular);
-        if (!(this.getIntent().getSerializableExtra("content") instanceof ContentBean)) {
-            throw new AndroidRuntimeException("the params is not instanceof com.chy.dialoglibrary.bean.ContentBean,method:ContentBean(String title, String content,  String cancelButton, String rightButton) or ContentBean(String content, String rightButton)");
-        }
-        ContentBean contentBean = (ContentBean) this.getIntent().getSerializableExtra("content");
-        mBinding.setContent(contentBean);
+        init();
         setDialogSize();
         mBinding.tvRight.setOnClickListener(this);
         mBinding.tvCancel.setOnClickListener(this);
         initIcon();
+    }
+
+    private void init() {
+        if (this.getIntent().getSerializableExtra("content") == null) {
+            throw new AndroidRuntimeException("the \"content\" is null,method:ContentBean(String title, String content,  String cancelButton, String rightButton) or ContentBean(String content, String rightButton)");
+        }
+        ContentBean contentBean = (ContentBean) this.getIntent().getSerializableExtra("content");
+        mBinding.setContent(contentBean);
     }
 
     private void initIcon() {

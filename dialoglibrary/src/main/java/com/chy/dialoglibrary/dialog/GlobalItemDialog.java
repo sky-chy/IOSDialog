@@ -40,12 +40,12 @@ public class GlobalItemDialog extends AppCompatActivity {
 
     public GlobalItemDialog() {
         if (!initializeType)
-            throw new AndroidRuntimeException("error:Please use GlobalItemDialog.getInstance(CHYOnRightClickListener listener, String BtnCancel) to initialize");
+            throw new AndroidRuntimeException("error:Please use GlobalItemDialog.getInstance(String BtnCancel, CHYOnItemClickListener listener) to initialize");
     }
 
-    public Intent show(Context context, String[] strs) {
+    public Intent show(Context context, String[] content) {
         Intent intent = new Intent(context, this.getClass());
-        intent.putExtra("content", strs);
+        intent.putExtra("content", content);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return intent;
     }
@@ -54,8 +54,15 @@ public class GlobalItemDialog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBingding = DataBindingUtil.setContentView(this, R.layout.dialog_item);
-        if (!(this.getIntent().getSerializableExtra("content") instanceof String[])) {
-            throw new AndroidRuntimeException("error:the params is not instanceof String[])");
+        init();
+        initData();
+        initAdapter();
+        setDialogSize();
+    }
+
+    private void init() {
+        if (this.getIntent().getSerializableExtra("content") == null) {
+            throw new NullPointerException("error:the \"content\" is null");
         }
         stritems = this.getIntent().getStringArrayExtra("content");
         if (stritems.length > 9) {
@@ -63,9 +70,6 @@ public class GlobalItemDialog extends AppCompatActivity {
         }
         if (!TextUtils.isEmpty(cancel))
             mBingding.tvCancel.setText(cancel);
-        initData();
-        initAdapter();
-        setDialogSize();
     }
 
     private void initData() {

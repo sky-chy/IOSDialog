@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
      * @param dialogType 对话框类型
      */
     private void startGlobalDialog(final GlobalRegularDialog.DIALOG_TYPE dialogType) {
-        GlobalRegularDialog globalRegularDialog = GlobalRegularDialog.getInstance(new CHYOnRightClickListener() {
+        GlobalRegularDialog globalRegularDialog = GlobalRegularDialog.getInstance(dialogType, new CHYOnRightClickListener() {
             @Override
             public void onRightClick(View view) {
                 Toast.makeText(MainActivity.this, "点击了全局对话框的" + dialogType + "的rightButton", Toast.LENGTH_SHORT).show();
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelClick(View view) {
                 Toast.makeText(MainActivity.this, "点击了全局对话框的" + dialogType + "的cancelButton", Toast.LENGTH_SHORT).show();
             }
-        }, dialogType);
+        });
         startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的")));
 //        startActivity(globalRegularDialog.show(this, new ContentBean("我是内容区", "好的")));
     }

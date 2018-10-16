@@ -1,5 +1,6 @@
 package com.chy.chydialog;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +19,7 @@ import com.chy.dialoglibrary.dialog.LocalItemDialog;
 import com.chy.dialoglibrary.dialog.LocalRegularDialog;
 import com.chy.dialoglibrary.dialog.LocalTextDialog;
 import com.chy.dialoglibrary.listener.CHYOnCancelClickListener;
+import com.chy.dialoglibrary.listener.CHYOnGridClickListener;
 import com.chy.dialoglibrary.listener.CHYOnItemClickListener;
 import com.chy.dialoglibrary.listener.CHYOnRightClickListener;
 
@@ -40,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 9; i++) {
             strs[i] = "菜单" + i;
         }
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 20; i++) {
             list.add(new ContentBean("功能" + i, R.mipmap.ic_launcher_round));
         }
     }
 
     public void onClick(View view) {
         switch (view.getId()) {
-           //全局对话框
+            //全局对话框
             case R.id.btn_text_dialog1:
                 GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
                     @Override
@@ -93,10 +95,10 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(globalItemDialog.show(this, strs,new ColorBean(),new SizeBean(30f,30f)));
                 break;
             case R.id.btn_grid_dialog1:
-                GlobalGridDialog globalGridDialog = GlobalGridDialog.getInstance(new CHYOnItemClickListener() {
+                GlobalGridDialog globalGridDialog = GlobalGridDialog.getInstance(new CHYOnGridClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                    public void onGridClick(View view, String title) {
+                        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
                     }
                 });
                 //原始状态的设置内容
@@ -114,14 +116,16 @@ public class MainActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(MainActivity.this, "对话框已启动", Toast.LENGTH_LONG).show();
                         GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
                             @Override
                             public void onRightClick(View view) {
-                                Toast.makeText(MainActivity.this, "点击了全局对话框的rightButton", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                startActivity(intent);
+
                             }
                         });
-                        startActivity(globalTextDialog.show(MainActivity.this, new ContentBean("我是内容区", "好的")));
+                        startActivity(globalTextDialog.show(MainActivity.this, new ContentBean("点击\"启动\"按钮即可启动App", "启动")));
                     }
                 }, 4000);
                 break;
@@ -170,17 +174,34 @@ public class MainActivity extends AppCompatActivity {
                 //localItemDialog.setContentSize(30f);
                 break;
             case R.id.btn_grid_dialog2:
-                LocalGridDialog localGridDialog = new LocalGridDialog(MainActivity.this);
-                localGridDialog.createDialog(list, new CHYOnItemClickListener() {
+                //启动方式1
+                LocalGridDialog fragment = LocalGridDialog.getInstance(list, new CHYOnGridClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                    public void onGridClick(View view, String title) {
+                        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
                     }
                 });
-                //设置文字颜色
-                //localGridDialog.setTextColor(Color.RED);
-                //设置文字大小
-                //localGridDialog.setTextSize(30f);
+
+                //启动方式2
+                //Bundle bundle = new Bundle();
+                //bundle.putFloat("size", 30f);
+                //bundle.putInt("color", Color.GREEN);
+                //bundle.putSerializable("content", list);
+                //LocalGridDialog fragment = LocalGridDialog.getInstance(bundle, new CHYOnGridClickListener() {
+                //    @Override
+                //    public void onGridClick(View view, String title) {
+                //        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
+                //   }
+                //});
+
+                //启动方式3
+                //LocalGridDialog fragment = LocalGridDialog.getInstance(Color.BLUE, 30f, list, new CHYOnGridClickListener() {
+                //    @Override
+                //    public void onGridClick(View view, String title) {
+                //        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
+                //    }
+                //});
+                fragment.show(getSupportFragmentManager(), null);
                 break;
             case R.id.btn_delayed_start2:
                 moveTaskToBack(true);
@@ -202,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
 
     /**
      * 启动全局对话框

@@ -1,155 +1,197 @@
 package com.chy.dialoglibrary.dialog;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import com.chy.dialoglibrary.R;
+import com.chy.dialoglibrary.adapter.PagerAdapter;
 import com.chy.dialoglibrary.bean.ContentBean;
 import com.chy.dialoglibrary.databinding.DialogGridBinding;
-import com.chy.dialoglibrary.databinding.ItemGridBinding;
-import com.chy.dialoglibrary.listener.CHYOnItemClickListener;
+import com.chy.dialoglibrary.fragment.PagerFragment;
+import com.chy.dialoglibrary.listener.CHYOnGridClickListener;
 
 import java.util.ArrayList;
 
-public class LocalGridDialog extends Dialog {
-    private Context mContext;
+public class LocalGridDialog extends AppCompatDialogFragment implements ViewPager.OnPageChangeListener {
     private DialogGridBinding mBinding;
-    private ItemGridBinding itemGridBinding;
+    private static CHYOnGridClickListener chyOnGridClickListener;
     private int dialogWidth;
     private int dialogHeight;
-    private RecyclerView.Adapter adapter = null;
-    private int color;
-    private float size;
+    private ArrayList<PagerFragment> fragments = new ArrayList<>();
+    private View[] view;
+    public static LocalGridDialog getInstance(@ColorInt int color, float size, ArrayList<ContentBean> content, CHYOnGridClickListener listener) {
+        chyOnGridClickListener = listener;
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("content", content);
+        bundle.putInt("color", color);
+        bundle.putFloat("size", size);
+        LocalGridDialog fragment = new LocalGridDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
 
-    private LocalGridDialog(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
-        mContext = context;
+    public static LocalGridDialog getInstance(ArrayList<ContentBean> content, CHYOnGridClickListener listener) {
+        chyOnGridClickListener = listener;
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("content", content);
+        LocalGridDialog fragment = new LocalGridDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    public static LocalGridDialog getInstance(Bundle bundle, CHYOnGridClickListener listener) {
+        chyOnGridClickListener = listener;
+        LocalGridDialog fragment = new LocalGridDialog();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CHYDialog);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_grid, null, false);
         init();
+        return mBinding.getRoot();
     }
 
-    public LocalGridDialog(Context context) {
-        this(context, R.style.CHYDialog);
-    }
-
-    /**
-     * 初始化
-     */
-    private void init() {
-        this.setCanceledOnTouchOutside(true);
-        mBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.dialog_grid, null, false);
-        setContentView(mBinding.getRoot());
+    @Override
+    public void onStart() {
+        super.onStart();
         setDialogSize();
     }
 
+    private void init() {
+        Bundle bundle = this.getArguments();
+        ArrayList<ContentBean> content = (ArrayList<ContentBean>) bundle.getSerializable("content");
+        initPager(content, bundle);
+        mBinding.pagerGrid.addOnPageChangeListener(this);
+
+    }
+
+    private void initPager(ArrayList<ContentBean> content, Bundle oldBundle) {
+        //以8为基数向上取整作为页数
+        int pagerCount = (int) Math.ceil((content.size() / 8f));
+        //item集合游标
+        int indexPager = 0;
+        //item集合
+        for (int i = 0; i < pagerCount; i++) {
+            ArrayList<ContentBean> list = new ArrayList<>();
+            while (list.size() != 8) {
+                //第一页
+                if (indexPager == 0) {
+                    for (int j = 0; j < 8; j++) {
+                        if (indexPager < pagerCount) {
+                            list.add(content.get(indexPager));
+                            indexPager++;
+                        }
+                    }
+                    //其他页
+                } else if (list.size() != 8 && indexPager < content.size()) {
+                    list.add(content.get(indexPager));
+                    indexPager++;
+                } else {
+                    break;
+                }
+            }
+            Bundle bundle = new Bundle();
+            bundle.putInt("color", oldBundle.getInt("color", 0));
+            bundle.putFloat("size", oldBundle.getFloat("size", 0f));
+            bundle.putSerializable("content", list);
+            //初始化监听事件
+            fragments.add(PagerFragment.getInstance(bundle, new CHYOnGridClickListener() {
+                @Override
+                public void onGridClick(View view, String title) {
+                    if (chyOnGridClickListener != null)
+                        chyOnGridClickListener.onGridClick(view, title);
+                    dismiss();
+                }
+            }));
+        }
+        //初始化页面
+        mBinding.pagerGrid.setAdapter(new PagerAdapter(fragments, getChildFragmentManager()));
+        initIndicator( pagerCount);
+    }
+    /**
+     * 初始化指示器
+     *
+     * @param pagerCount 总页数
+     */
+    private void initIndicator(int pagerCount) {
+        view = new View[pagerCount];
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(25, 25);
+        layoutParams.setMargins(15, 0, 15, 0);
+        for (int i = 0; i < pagerCount; i++) {
+            view[i] = new View(getContext());
+            if (i == 0)
+                view[i].setBackgroundResource(R.drawable.ic_solid_circle);
+            else
+                view[i].setBackgroundResource(R.drawable.ic_hollow_circle);
+            view[i].setLayoutParams(layoutParams);
+            mBinding.indicator.addView(view[i]);
+        }
+    }
     /**
      * 设置窗口尺寸
      */
     private void setDialogSize() {
-        Resources resources = mContext.getResources();
+        Resources resources = this.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        WindowManager.LayoutParams at = this.getWindow().getAttributes();
-        if (height * 0.35 < (1280 * 0.3)) {
-            dialogHeight= (int) (1280 * 0.3);
+        WindowManager.LayoutParams at = getDialog().getWindow().getAttributes();
+        if (height * 0.45 < (1920 * 0.3)) {
+            dialogHeight = (int) (1920 * 0.3);
         } else
-            dialogHeight = (int) (height * 0.35);
+            dialogHeight = (int) (height * 0.45);
         dialogWidth = width;
         at.height = dialogHeight;
         at.width = dialogWidth;
         at.gravity = Gravity.BOTTOM;
-        this.getWindow().setAttributes(at);
+        getDialog().getWindow().setAttributes(at);
+    }
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        resetIndicator();
+        view[position].setBackgroundResource(R.drawable.ic_solid_circle);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 
     /**
-     * 创建item对话框
-     *
-     * @param item              数据源
-     * @param itemClickListener item监听器
+     * 重置指示器
      */
-    public void createDialog(final ArrayList<ContentBean> item, final CHYOnItemClickListener itemClickListener) {
-        //初始化数据源
-        initAdapter(item, itemClickListener);
-        this.show();
-    }
-
-    /**
-     * 初始化数据源
-     *
-     * @param item              数据源
-     * @param itemClickListener item的监听器
-     */
-    private void initAdapter(final ArrayList<ContentBean> item, final CHYOnItemClickListener itemClickListener) {
-        adapter = new RecyclerView.Adapter() {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                itemGridBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.item_grid, parent, false);
-                return new RecyclerView.ViewHolder(itemGridBinding.getRoot()) {
-
-                };
-            }
-
-            @Override
-            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-                ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
-                lp.width = (int) ((dialogWidth - mContext.getResources().getDimension(R.dimen.dimen_30_0dp)) / 4);
-                holder.itemView.setLayoutParams(lp);
-                itemGridBinding.imgIcon.setBackgroundResource(item.get(position).icon);
-                itemGridBinding.tvTitle.setText(item.get(position).title);
-                if (color != 0)
-                    itemGridBinding.tvTitle.setTextColor(color);
-                if (size != 0f)
-                    itemGridBinding.tvTitle.setTextSize(size);
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (itemClickListener != null) {
-                            itemClickListener.onItemClick(v, position);
-                        }
-                        dismiss();
-                    }
-                });
-            }
-
-            @Override
-            public int getItemCount() {
-                return item.size();
-            }
-        };
-
-        mBinding.rvGrid.setAdapter(adapter);
-    }
-
-    /**
-     * 设置文字颜色
-     *
-     * @param color 颜色
-     */
-    public void setTextColor(@ColorInt int color) {
-        this.color = color;
-        adapter.notifyDataSetChanged();
-    }
-
-    /**
-     * 设置文字大小
-     *
-     * @param size 字体大小
-     */
-    public void setTextSize(float size) {
-        this.size = size;
-        adapter.notifyDataSetChanged();
+    private void resetIndicator() {
+        for (int i = 0; i < view.length; i++) {
+            view[i].setBackgroundResource(R.drawable.ic_hollow_circle);
+        }
     }
 }

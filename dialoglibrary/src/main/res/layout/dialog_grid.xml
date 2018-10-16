@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
+        android:orientation="vertical"
         android:padding="@dimen/dimen_10_0dp"
         tools:context=".dialog.GlobalGridDialog">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_grid"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/ic_dialog_background"
-            android:orientation="horizontal"
-            android:padding="@dimen/dimen_5_0dp"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            app:spanCount="2" />
-    </RelativeLayout>
+            android:orientation="vertical">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager_grid"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+
+            <LinearLayout
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_30_0dp"
+                android:background="@android:color/transparent"
+                android:gravity="center|top"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+    </LinearLayout>
 </layout>

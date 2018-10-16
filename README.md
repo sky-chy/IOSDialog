@@ -1,6 +1,10 @@
 ## [English](https://github.com/chyhongye/IOSDialog/blob/master/README_EN.md)|中文
 # 一个高仿ios的文本、提示、item、grid的全局和局部对话框
 该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
+## 全局对话框：
+### 顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
+## 局部对话框：
+### 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
 # 截图
 # Text_Dialog
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="360" height="640" alt="加载失败"> )
@@ -21,29 +25,27 @@
         private ActivityMainBinding mainBinding;
         private String[] strs;
         private ArrayList<ContentBean> list = new ArrayList<>();
-
+    
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
             init();
         }
-
+    
         private void init() {
             strs = new String[9];
             for (int i = 0; i < 9; i++) {
                 strs[i] = "菜单" + i;
             }
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < 20; i++) {
                 list.add(new ContentBean("功能" + i, R.mipmap.ic_launcher_round));
             }
         }
-
+    
         public void onClick(View view) {
             switch (view.getId()) {
-                /**
-                 * 全局对话框
-                 */
+                //全局对话框
                 case R.id.btn_text_dialog1:
                     GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
                         @Override
@@ -89,10 +91,10 @@
                     //startActivity(globalItemDialog.show(this, strs,new ColorBean(),new SizeBean(30f,30f)));
                     break;
                 case R.id.btn_grid_dialog1:
-                    GlobalGridDialog globalGridDialog = GlobalGridDialog.getInstance(new CHYOnItemClickListener() {
+                    GlobalGridDialog globalGridDialog = GlobalGridDialog.getInstance(new CHYOnGridClickListener() {
                         @Override
-                        public void onItemClick(View view, int position) {
-                            Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                        public void onGridClick(View view, String title) {
+                            Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
                         }
                     });
                     //原始状态的设置内容
@@ -110,20 +112,20 @@
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(MainActivity.this, "对话框已启动", Toast.LENGTH_LONG).show();
                             GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
                                 @Override
                                 public void onRightClick(View view) {
-                                    Toast.makeText(MainActivity.this, "点击了全局对话框的rightButton", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                    startActivity(intent);
+   
                                 }
                             });
-                            startActivity(globalTextDialog.show(MainActivity.this, new ContentBean("我是内容区", "好的")));
+                            startActivity(globalTextDialog.show(MainActivity.this, new ContentBean("点击\"启动\"按钮即可启动App", "启动")));
                         }
                     }, 4000);
                     break;
-                /**
-                 * 局部对话框
-                 */
+                //局部对话框
                 case R.id.btn_text_dialog2:
                     final LocalTextDialog localTextDialog = new LocalTextDialog(this);
                     localTextDialog.createDialog(new ContentBean("我是内容", "好的"), new CHYOnRightClickListener() {
@@ -138,7 +140,7 @@
                     //设置字体大小
                     //localTextDialog.setTextSize(new SizeBean(80f, 50f, 60f, 60f));
                     //设置背景
-                    //localTextDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
+                    localTextDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
                     break;
                 case R.id.btn_right_dialog2:
                     startLocalDialog(LocalRegularDialog.DIALOG_TYPE.RIGHT_DIALOG);
@@ -168,17 +170,34 @@
                     //localItemDialog.setContentSize(30f);
                     break;
                 case R.id.btn_grid_dialog2:
-                    LocalGridDialog localGridDialog = new LocalGridDialog(MainActivity.this);
-                    localGridDialog.createDialog(list, new CHYOnItemClickListener() {
+                    //启动方式1
+                    LocalGridDialog fragment = LocalGridDialog.getInstance(list, new CHYOnGridClickListener() {
                         @Override
-                        public void onItemClick(View view, int position) {
-                            Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                        public void onGridClick(View view, String title) {
+                            Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    //设置文字颜色
-                    //localGridDialog.setTextColor(Color.RED);
-                    //设置文字大小
-                    //localGridDialog.setTextSize(30f);
+    
+                    //启动方式2
+                    //Bundle bundle = new Bundle();
+                    //bundle.putFloat("size", 30f);
+                    //bundle.putInt("color", Color.GREEN);
+                    //bundle.putSerializable("content", list);
+                    //LocalGridDialog fragment = LocalGridDialog.getInstance(bundle, new CHYOnGridClickListener() {
+                    //    @Override
+                    //    public void onGridClick(View view, String title) {
+                    //        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
+                    //   }
+                    //});
+    
+                    //启动方式3
+                    //LocalGridDialog fragment = LocalGridDialog.getInstance(Color.BLUE, 30f, list, new CHYOnGridClickListener() {
+                    //    @Override
+                    //    public void onGridClick(View view, String title) {
+                    //        Toast.makeText(MainActivity.this, title, Toast.LENGTH_SHORT).show();
+                    //    }
+                    //});
+                    fragment.show(getSupportFragmentManager(), null);
                     break;
                 case R.id.btn_delayed_start2:
                     moveTaskToBack(true);
@@ -200,7 +219,8 @@
                     break;
             }
         }
-
+    
+    
         /**
          * 启动全局对话框
          *
@@ -227,9 +247,9 @@
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的"), new SizeBean(80f ,50f, 60f ,60f)));
             //同时改变文字大小和颜色并设置内容
             //startActivity(globalRegularDialog.show(this, new ContentBean("我是标题", "我是内容区", "取消", "好的"), new ColorBean(Color.RED, Color.BLUE, Color.GREEN, Color.GRAY), new SizeBean(80f ,50f, 60f ,60f)));
-
+    
         }
-
+    
         /**
          * 启动局部对话框
          *

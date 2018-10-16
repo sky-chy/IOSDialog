@@ -5,6 +5,18 @@
 顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
 ## 局部对话框：
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
+* 全局对话框使用方法
+>* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
+>* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)
+>* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)
+>* [GlobalItemDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalItemDialog)
+>* [GlobalGridDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalGridDialog)
+* 局部对话框使用方法
+>* [LocalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalTextDialog)
+>* [LocalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalRegularDialog)
+>* [LocalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalRegularDialog)
+>* [LocalItemDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalItemDialog)
+>* [LocalGridDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalGridDialog)
 # 截图
 # Text_Dialog
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="360" height="640" alt="加载失败"> )

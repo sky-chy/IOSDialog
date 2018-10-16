@@ -3,19 +3,19 @@
 The dialog box's global dialog box is to solve the problem that the native dialog does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed in the launcher even if the app enters the background.
 # Screenshot
 # Text_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="150" height="150" alt="loading lose"> )
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="480" height="640" alt="Loading lose"> )
 # Regular_Right_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Regular_Right_Dialog.png" width="150" height="150" alt="loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Regular_Right_Dialog.png" width="480" height="640" alt="Loading lose">)
 # Item_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Item_Dialog.png" width="150" height="150" alt="loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Item_Dialog.png" width="480" height="640" alt="Loading lose">)
 # Grid_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Grid_Dialog.png" width="150" height="150" alt="loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Grid_Dialog.png" width="480" height="640" alt="Loading lose">)
 # Global Delayed start
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start1.png" width="150" height="150" alt="loading lose">)
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start2.png" width="150" height="150" alt="loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start1.png" width="480" height="640" alt="Loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start2.png" width="480" height="640" alt="Loading lose">)
 # Local Delayed start.png
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="150" height="150" alt="loading lose">)
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="150" height="150" alt="loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="480" height="640" alt="Loading lose">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="480" height="640" alt="Loading lose">)
 # Complete tutorial
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;

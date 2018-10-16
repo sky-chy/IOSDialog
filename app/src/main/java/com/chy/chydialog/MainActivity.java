@@ -47,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()) {
-            /**
-             * 全局对话框
-             */
+           //全局对话框
             case R.id.btn_text_dialog1:
                 GlobalTextDialog globalTextDialog = GlobalTextDialog.getInstance(new CHYOnRightClickListener() {
                     @Override
@@ -127,9 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, 4000);
                 break;
-            /**
-             * 局部对话框
-             */
+            //局部对话框
             case R.id.btn_text_dialog2:
                 final LocalTextDialog localTextDialog = new LocalTextDialog(this);
                 localTextDialog.createDialog(new ContentBean("我是内容", "好的"), new CHYOnRightClickListener() {

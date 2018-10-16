@@ -34,7 +34,6 @@ public class ContentBean implements Serializable {
     public ContentBean(String title, String content, String cancelButton, String rightButton) {
         this.title = title;
         this.content = content;
-        this.icon = icon;
         this.cancelButton = cancelButton;
         this.rightButton = rightButton;
     }

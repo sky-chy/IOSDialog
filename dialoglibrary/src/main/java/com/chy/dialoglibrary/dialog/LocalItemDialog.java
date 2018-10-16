@@ -3,6 +3,7 @@ package com.chy.dialoglibrary.dialog;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.ColorInt;
@@ -101,16 +102,18 @@ public class LocalItemDialog extends Dialog {
      * @param itemClickListener item的监听器
      */
     private void initAdapter(final String[] item, final CHYOnItemClickListener itemClickListener) {
+        final int arrayLeght;
+        if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            arrayLeght = 5;
+        else
+            arrayLeght = item.length;
         adapter = new RecyclerView.Adapter() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 mItemBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.item_textview, parent, false);
                 return new RecyclerView.ViewHolder(mItemBinding.getRoot()) {
-                    @Override
-                    public String toString() {
-                        return super.toString();
-                    }
+
                 };
             }
 
@@ -142,7 +145,7 @@ public class LocalItemDialog extends Dialog {
 
             @Override
             public int getItemCount() {
-                return item.length;
+                return arrayLeght;
             }
         };
         mBinding.rvItem.setAdapter(adapter);

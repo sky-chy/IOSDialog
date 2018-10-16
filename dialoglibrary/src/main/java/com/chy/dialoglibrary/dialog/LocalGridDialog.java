@@ -62,7 +62,10 @@ public class LocalGridDialog extends Dialog {
         int height = dm.heightPixels;
 
         WindowManager.LayoutParams at = this.getWindow().getAttributes();
-        dialogHeight = (int) (height * 0.35);
+        if (height * 0.35 < (1280 * 0.3)) {
+            dialogHeight= (int) (1280 * 0.3);
+        } else
+            dialogHeight = (int) (height * 0.35);
         dialogWidth = width;
         at.height = dialogHeight;
         at.width = dialogWidth;
@@ -95,10 +98,7 @@ public class LocalGridDialog extends Dialog {
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 itemGridBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.item_grid, parent, false);
                 return new RecyclerView.ViewHolder(itemGridBinding.getRoot()) {
-                    @Override
-                    public String toString() {
-                        return super.toString();
-                    }
+
                 };
             }
 
@@ -136,7 +136,7 @@ public class LocalGridDialog extends Dialog {
     /**
      * 设置文字颜色
      *
-     * @param color
+     * @param color 颜色
      */
     public void setTextColor(@ColorInt int color) {
         this.color = color;
@@ -146,7 +146,7 @@ public class LocalGridDialog extends Dialog {
     /**
      * 设置文字大小
      *
-     * @param size
+     * @param size 字体大小
      */
     public void setTextSize(float size) {
         this.size = size;

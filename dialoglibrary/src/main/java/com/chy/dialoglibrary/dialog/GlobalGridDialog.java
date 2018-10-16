@@ -125,6 +125,7 @@ public class GlobalGridDialog extends AppCompatActivity {
 
     }
 
+    @SuppressWarnings("unchecked")
     private void init() {
         if (this.getIntent().getSerializableExtra("content") == null) {
             throw new NullPointerException("error:the \"content\" is null, Please use ArrayList<ContentBean> to initialize");
@@ -152,10 +153,7 @@ public class GlobalGridDialog extends AppCompatActivity {
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 itemGridBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.item_grid, parent, false);
                 return new RecyclerView.ViewHolder(itemGridBinding.getRoot()) {
-                    @Override
-                    public String toString() {
-                        return super.toString();
-                    }
+
                 };
             }
 
@@ -220,7 +218,10 @@ public class GlobalGridDialog extends AppCompatActivity {
         int height = dm.heightPixels;
 
         WindowManager.LayoutParams at = this.getWindow().getAttributes();
-        dialogHeight = (int) (height * 0.35);
+        if (height * 0.35 < (1280 * 0.3)) {
+            dialogHeight= (int) (1280 * 0.3);
+        } else
+            dialogHeight = (int) (height * 0.35);
         dialogWidth = width;
         at.height = dialogHeight;
         at.width = dialogWidth;
@@ -235,8 +236,6 @@ public class GlobalGridDialog extends AppCompatActivity {
         chyOnItemClickListener = null;
         content = null;
         itemGridBinding = null;
-        if (content != null)
-            content.clear();
         content = null;
         intent = null;
         adapter = null;

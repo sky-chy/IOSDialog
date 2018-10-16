@@ -2,6 +2,7 @@ package com.chy.dialoglibrary.dialog;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -148,16 +149,18 @@ public class GlobalItemDialog extends AppCompatActivity {
     }
 
     private void initAdapter() {
+        final int arrayLeght;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            arrayLeght = 5;
+        else
+            arrayLeght = stritems.length;
         adapter = new RecyclerView.Adapter() {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 itemTextviewBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.item_textview, parent, false);
                 return new RecyclerView.ViewHolder(itemTextviewBinding.getRoot()) {
-                    @Override
-                    public String toString() {
-                        return super.toString();
-                    }
+
                 };
             }
 
@@ -192,7 +195,7 @@ public class GlobalItemDialog extends AppCompatActivity {
 
             @Override
             public int getItemCount() {
-                return stritems.length;
+                return arrayLeght;
             }
         };
         mBingding.rvItem.setAdapter(adapter);

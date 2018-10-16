@@ -3,19 +3,19 @@
 该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
 # 截图
 # Text_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="150" height="150" alt="加载失败"> )
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="480" height="640" alt="加载失败"> )
 # Regular_Right_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Regular_Right_Dialog.png" width="150" height="150" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Regular_Right_Dialog.png" width="480" height="640" alt="加载失败">)
 # Item_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Item_Dialog.png" width="150" height="150" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Item_Dialog.png" width="480" height="640" alt="加载失败">)
 # Grid_Dialog
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Grid_Dialog.png" width="150" height="150" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Grid_Dialog.png" width="480" height="640" alt="加载失败">)
 # Global Delayed start
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start1.png" width="150" height="150" alt="加载失败">)
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start2.png" width="150" height="150" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start1.png" width="480" height="640" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Global%20Delayed%20start2.png" width="480" height="640" alt="加载失败">)
 # Local Delayed start.png
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="150" height="150" alt="加载失败">)
- ![image](<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="150" height="150" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="480" height="640" alt="加载失败">)
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="480" height="640" alt="加载失败">)
 # 完整的使用教程
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;

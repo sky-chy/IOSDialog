@@ -1,4 +1,4 @@
-## Enligh|[中文](https://github.com/chyhongye/IOSDialog/blob/master/README.md)
+## [Enligh](https://github.com/chyhongye/IOSDialog/blob/master/README_EN.md)|中文
 # 一个高仿ios的文本、提示、item、grid的全局和局部对话框
 该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
 # 截图

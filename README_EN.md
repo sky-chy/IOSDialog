@@ -1,4 +1,4 @@
-# [Enligh](https://github.com/chyhongye/IOSDialog/blob/master/README_EN.md)|[中文](https://github.com/chyhongye/IOSDialog/blob/master/README.md)
+## Enligh|[中文](https://github.com/chyhongye/IOSDialog/blob/master/README.md)
 # A global and local dialog for text, prompts, item, grid, high imitation ios
 The dialog box's global dialog box is to solve the problem that the native dialog does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed in the launcher even if the app enters the background.
 # Screenshot

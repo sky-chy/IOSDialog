@@ -5,6 +5,8 @@ The dialog box's global dialog box is to solve the problem that the native dialo
 As the name implies, it can be popped directly at any time. It is more suitable for some forced pop-up functions, such as: upgrade dialog, notification dialog, etc.
 ## Local Dialog:
 As the name implies, it is a dialog box that depends on an activity or fragment. Once it leaves these contexts, it will not work properly.
+# Preview  
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.png" width="360" height="640" alt="加载失败"> )
 * Global Dialog usage：
 >* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
 >* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)

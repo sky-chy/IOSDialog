@@ -5,6 +5,8 @@
 顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
 ## 局部对话框：
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
+# 预览图  
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.png" width="360" height="640" alt="加载失败"> )
 * 全局对话框使用方法
 >* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
 >* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)

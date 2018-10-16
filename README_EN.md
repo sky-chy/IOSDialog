@@ -3,8 +3,20 @@
 The dialog box's global dialog box is to solve the problem that the native dialog does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed in the launcher even if the app enters the background.
 ## Global Dialog:
 As the name implies, it can be popped directly at any time. It is more suitable for some forced pop-up functions, such as: upgrade dialog, notification dialog, etc.
-## Local dialog:
+## Local Dialog:
 As the name implies, it is a dialog box that depends on an activity or fragment. Once it leaves these contexts, it will not work properly.
+* Global Dialog usage：
+>* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
+>* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)
+>* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)
+>* [GlobalItemDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalItemDialog)
+>* [GlobalGridDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalGridDialog)
+* Local Dialog usage：
+>* [LocalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalTextDialog)
+>* [LocalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalRegularDialog)
+>* [LocalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalRegularDialog)
+>* [LocalItemDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalItemDialog)
+>* [LocalGridDialog](https://github.com/chyhongye/IOSDialog/wiki/LocalGridDialog)
 # Screenshot
 # Text_Dialog
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="360" height="640" alt="Loading lose"> )

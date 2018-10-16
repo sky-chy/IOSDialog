@@ -2,9 +2,9 @@
 # 一个高仿ios的文本、提示、item、grid的全局和局部对话框
 该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
 ## 全局对话框：
-### 顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
+顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
 ## 局部对话框：
-### 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
+顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
 # 截图
 # Text_Dialog
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Text_Dialog.png" width="360" height="640" alt="加载失败"> )
@@ -32,7 +32,7 @@
             mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
             init();
         }
-    
+  
         private void init() {
             strs = new String[9];
             for (int i = 0; i < 9; i++) {
@@ -278,4 +278,4 @@
             //设置背景
             //localRegularDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
         }
-    }
+    }  

@@ -6,7 +6,7 @@ As the name implies, it can be popped directly at any time. It is more suitable 
 ## Local Dialog:
 As the name implies, it is a dialog box that depends on an activity or fragment. Once it leaves these contexts, it will not work properly.
 # Preview  
-(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.png" width="360" height="640" alt="加载失败"> )
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * Global Dialog usage：
 >* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
 >* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)

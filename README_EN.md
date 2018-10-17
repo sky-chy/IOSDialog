@@ -1,10 +1,44 @@
 ## English|[中文](https://github.com/chyhongye/IOSDialog/blob/master/README.md)
 # A global and local dialog for text, prompts, item, grid, high imitation ios
-The dialog box's global dialog box is to solve the problem that the native dialog does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed in the launcher even if the app enters the background.
+The dialog box project based on Databinding and Recyclerview's global dialog box is to solve the problem that the native dialog box does not support display on some mobile phones. The local dialog box is written by the way. The global dialog box can be displayed even if the app enters the background. Inside the starter
 ## Global Dialog:
 As the name implies, it can be popped directly at any time. It is more suitable for some forced pop-up functions, such as: upgrade dialog, notification dialog, etc.
 ## Local Dialog:
 As the name implies, it is a dialog box that depends on an activity or fragment. Once it leaves these contexts, it will not work properly.
+# Instructions：  
+### Root build.gradle's allprojects join maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
+···
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
+            ...
+        }
+    }  
+···
+### The app's build.gradle dependencies are added to the implementation 'com.chy.dialog:IOSDialog:1.0.0'
+···
+    dependencies {
+        ...
+        implementation 'com.chy.dialog:IOSDialog:1.0.0'
+        ...
+    }  
+···   
+### App's build.gradle android joins dataBinding {enabled = true}
+···
+    android {
+       ...
+        defaultConfig {
+           ...
+        }
+        buildTypes {
+            ...
+        }
+        dataBinding {
+            enabled = true
+        }
+    }
+···
 # Preview  
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * Global Dialog usage：

@@ -29,4 +29,7 @@ dependencies {
     implementation project(':dialoglibrary')
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //完美的gif图解决框架
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.7'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 }

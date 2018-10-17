@@ -69,7 +69,7 @@ public class LocalGridDialog extends AppCompatDialogFragment implements ViewPage
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_grid, null, false);
+        mBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.dialog_grid, null, false);
         init();
         return mBinding.getRoot();
     }
@@ -141,7 +141,7 @@ public class LocalGridDialog extends AppCompatDialogFragment implements ViewPage
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(25, 25);
         layoutParams.setMargins(15, 0, 15, 0);
         for (int i = 0; i < pagerCount; i++) {
-            view[i] = new View(getContext());
+            view[i] = new View(getActivity());
             if (i == 0)
                 view[i].setBackgroundResource(R.drawable.ic_solid_circle);
             else

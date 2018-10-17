@@ -1,10 +1,44 @@
 ## [English](https://github.com/chyhongye/IOSDialog/blob/master/README_EN.md)|中文
 # 一个高仿ios的文本、提示、item、grid的全局和局部对话框
-该对话框项目的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
+该对话框项目基于Databinding和Recyclerview的全局对话框是为了解决原生对话框在某些手机上面不支持展示的问题，局部对话框是顺便一起写的，全局对话框就算是app进入后台也能显示到启动器里面的
 ## 全局对话框：
 顾名思义就是不管在什么时候都可以直接弹出，比较适合做一些强制弹窗的功能，例如：升级对话框，通知对话框等等
 ## 局部对话框：
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
+# 使用方法：  
+### 根build.gradle的allprojects加入maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
+···
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
+            ...
+        }
+    }  
+···
+### app的build.gradle的dependencies加入implementation 'com.chy.dialog:IOSDialog:1.0.0'
+···
+    dependencies {
+        ...
+        implementation 'com.chy.dialog:IOSDialog:1.0.0'
+        ...
+    }  
+···   
+### app的build.gradle的android加入dataBinding {enabled = true}
+···
+    android {
+       ...
+        defaultConfig {
+           ...
+        }
+        buildTypes {
+            ...
+        }
+        dataBinding {
+            enabled = true
+        }
+    }
+···
 # 预览图  
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * 全局对话框使用方法

@@ -92,6 +92,8 @@ public class LocalTextDialog extends Dialog {
 
     /**
      * 设置文字颜色
+     *
+     * @param color 文字颜色
      */
     public void setTextColor(ColorBean color) {
         mBinding.setColor(color);
@@ -99,6 +101,7 @@ public class LocalTextDialog extends Dialog {
 
     /**
      * 设置文字大小
+     * @param size 文字大小
      */
     public void setTextSize(SizeBean size) {
         mBinding.setSize(size);

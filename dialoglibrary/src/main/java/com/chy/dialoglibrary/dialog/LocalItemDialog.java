@@ -153,6 +153,7 @@ public class LocalItemDialog extends Dialog {
 
     /**
      * 设置文字大小
+     * @param color 颜色值
      */
     public void setCancelButtonColor(@ColorInt int color) {
         mBinding.tvCancel.setTextColor(color);
@@ -164,7 +165,8 @@ public class LocalItemDialog extends Dialog {
     }
 
     /**
-     * 设置文字颜色
+     * 设置文字
+     * @param size 尺寸
      */
     public void setCancelButtonSize(float size) {
         mBinding.tvCancel.setTextSize(size);

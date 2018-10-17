@@ -65,7 +65,7 @@ public class PagerFragment extends Fragment {
             @NonNull
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                itemGridBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.item_grid, parent, false);
+                itemGridBinding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()), R.layout.item_grid, parent, false);
                 return new RecyclerView.ViewHolder(itemGridBinding.getRoot()) {
                 };
             }

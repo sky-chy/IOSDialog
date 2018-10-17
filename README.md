@@ -6,7 +6,7 @@
 ## 局部对话框：
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
 # 预览图  
-(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.png" width="360" height="640" alt="加载失败"> )
+(<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * 全局对话框使用方法
 >* [GlobalTextDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalTextDialog)
 >* [GlobalRegularDialog](https://github.com/chyhongye/IOSDialog/wiki/GlobalRegularDialog)

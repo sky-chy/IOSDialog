@@ -69,6 +69,7 @@ As the name implies, it is a dialog box that depends on an activity or fragment.
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="360" height="640" alt="Loading lose">)
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="360" height="640" alt="Loading lose">)
 # Complete tutorial
+```
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;
         private String[] strs;
@@ -327,3 +328,4 @@ As the name implies, it is a dialog box that depends on an activity or fragment.
             //localRegularDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
         }
     }
+```

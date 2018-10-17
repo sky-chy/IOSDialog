@@ -69,6 +69,7 @@
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="360" height="640" alt="加载失败">)
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="360" height="640" alt="加载失败">)
 # 完整的使用教程
+```
     public class MainActivity extends AppCompatActivity {
         private ActivityMainBinding mainBinding;
         private String[] strs;
@@ -327,3 +328,4 @@
             //localRegularDialog.setBackgroundResource(R.mipmap.ic_dialog, false);
         }
     }  
+```

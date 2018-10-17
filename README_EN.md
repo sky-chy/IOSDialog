@@ -7,7 +7,7 @@ As the name implies, it can be popped directly at any time. It is more suitable 
 As the name implies, it is a dialog box that depends on an activity or fragment. Once it leaves these contexts, it will not work properly.
 # Instructions：  
 ### Root build.gradle's allprojects join maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
-···
+```
     allprojects {
         repositories {
             ...
@@ -15,17 +15,17 @@ As the name implies, it is a dialog box that depends on an activity or fragment.
             ...
         }
     }  
-···
+```
 ### The app's build.gradle dependencies are added to the implementation 'com.chy.dialog:IOSDialog:1.0.0'
-···
+```
     dependencies {
         ...
         implementation 'com.chy.dialog:IOSDialog:1.0.0'
         ...
     }  
-···   
+```  
 ### App's build.gradle android joins dataBinding {enabled = true}
-···
+```
     android {
        ...
         defaultConfig {
@@ -38,7 +38,7 @@ As the name implies, it is a dialog box that depends on an activity or fragment.
             enabled = true
         }
     }
-···
+```
 # Preview  
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * Global Dialog usage：

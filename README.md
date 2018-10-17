@@ -7,7 +7,7 @@
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
 # 使用方法：  
 ### 根build.gradle的allprojects加入maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
-···
+```
     allprojects {
         repositories {
             ...
@@ -15,17 +15,17 @@
             ...
         }
     }  
-···
+```
 ### app的build.gradle的dependencies加入implementation 'com.chy.dialog:IOSDialog:1.0.0'
-···
+```
     dependencies {
         ...
         implementation 'com.chy.dialog:IOSDialog:1.0.0'
         ...
     }  
-···   
+```   
 ### app的build.gradle的android加入dataBinding {enabled = true}
-···
+```
     android {
        ...
         defaultConfig {
@@ -38,7 +38,7 @@
             enabled = true
         }
     }
-···
+```
 # 预览图  
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Preview.gif" width="360" height="640" alt="加载失败"> )
 * 全局对话框使用方法

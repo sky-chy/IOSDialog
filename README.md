@@ -7,7 +7,7 @@
 顾名思义就是依赖于某个activity或者fragment的才能弹出的对话框，一旦脱离这些上下文，就无法正常运行
 # 使用方法：  
 ### 根build.gradle的allprojects加入maven { url 'https://dl.bintray.com/chyhongye/IOSDialog' }
-```
+```java
 allprojects {
     repositories {
         ...
@@ -17,7 +17,7 @@ allprojects {
 }  
 ```
 ### app的build.gradle的dependencies加入implementation 'com.chy.dialog:IOSDialog:1.0.0'
-```
+```java
 dependencies {
     ...
     implementation 'com.chy.dialog:IOSDialog:1.0.0'
@@ -25,7 +25,7 @@ dependencies {
 }  
 ```   
 ### app的build.gradle的android加入dataBinding {enabled = true}
-```
+```java
 android {
    ...
     defaultConfig {
@@ -69,7 +69,7 @@ android {
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start1.png" width="360" height="640" alt="加载失败">)
 (<img src="https://github.com/chyhongye/IOSDialog/blob/master/png/Local%20Delayed%20start2.png" width="360" height="640" alt="加载失败">)
 # 完整的使用教程
-```
+```java
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
     private String[] strs;
